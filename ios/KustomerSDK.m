@@ -78,15 +78,27 @@ RCT_EXPORT_METHOD(describeCustomer: (NSDictionary *)data)
 {
     KUSCustomerDescription *customerDescription = [[KUSCustomerDescription alloc] init];
 
-    if ([data objectForKey:@"email"]) {
-        customerDescription.email = [data objectForKey:@"email"];
-    }
-    if ([data objectForKey:@"phone"]) {
-        customerDescription.phone = [data objectForKey:@"phone"];
+    NSString *const email = [data objectForKey:@"email"];
+    if ([email length] != 0) {
+        customerDescription.email = email;
     }
 
+    NSString *const phone = [data objectForKey:@"phone"];
+    if ([phone length] != 0) {
+        customerDescription.phone = phone;
+    }
+    
     if ([data objectForKey:@"custom"]) {
-        customerDescription.custom = [data objectForKey:@"custom"];
+        NSMutableDictionary *custom = [[NSMutableDictionary alloc] init];
+        
+        for(id key in [data objectForKey:@"custom"]) {
+            NSString *const value = [[data objectForKey:@"custom"] objectForKey:key];
+            if ([value length] != 0) {
+                [custom setValue:value forKey:key];
+            }
+        }
+        
+        customerDescription.custom = custom;
     }
 
     [Kustomer describeCustomer:customerDescription];
