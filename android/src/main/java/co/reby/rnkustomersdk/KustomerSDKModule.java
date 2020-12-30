@@ -73,8 +73,16 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void describeCustomer(final ReadableMap data){
         KUSCustomerDescription customerDescription = new KUSCustomerDescription();
-        customerDescription.setEmail(data.getString("email"));
-        customerDescription.setPhone(data.getString("phone"));
+
+        String email = data.getString("email");
+        if(!email.isEmpty()){
+            customerDescription.setEmail(email);
+        }
+
+        String phone = data.getString("phone");
+        if(!phone.isEmpty()){
+            customerDescription.setPhone(phone);
+        } 
 
         try {
             ReadableMap customData = data.getMap("custom");
@@ -99,9 +107,6 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
         while (iterator.hasNextKey()) {
             String key = iterator.nextKey();
             switch (readableMap.getType(key)) {
-                case Null:
-                    object.put(key, JSONObject.NULL);
-                    break;
                 case Boolean:
                     object.put(key, readableMap.getBoolean(key));
                     break;
@@ -109,7 +114,10 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
                     object.put(key, readableMap.getDouble(key));
                     break;
                 case String:
-                    object.put(key, readableMap.getString(key));
+                    String value = readableMap.getString(key);
+                    if(!value.isEmpty()){
+                        object.put(key, value);
+                    }
                     break;
             }
         }
