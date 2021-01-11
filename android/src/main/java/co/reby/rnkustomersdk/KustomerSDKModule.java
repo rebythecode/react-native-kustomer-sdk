@@ -75,12 +75,12 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
         KUSCustomerDescription customerDescription = new KUSCustomerDescription();
 
         String email = data.getString("email");
-        if(!email.isEmpty()){
+        if(email != null && !email.isEmpty()){
             customerDescription.setEmail(email);
         }
 
         String phone = data.getString("phone");
-        if(!phone.isEmpty()){
+        if(phone != null && !phone.isEmpty()){
             customerDescription.setPhone(phone);
         } 
 
@@ -115,7 +115,7 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
                     break;
                 case String:
                     String value = readableMap.getString(key);
-                    if(!value.isEmpty()){
+                    if(value != null && !value.isEmpty()){
                         object.put(key, value);
                     }
                     break;
