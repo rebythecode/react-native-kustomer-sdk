@@ -1,14 +1,11 @@
 package co.reby.rnkustomersdk;
 
+import androidx.lifecycle.liveData
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Promise;
 
-import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.ReadableMapKeySetIterator;
-import com.facebook.react.uimanager.BaseViewManager
-import com.facebook.react.uimanager.SimpleViewManager
 import com.kustomer.core.models.KusResult
 import com.kustomer.ui.Kustomer;
 
@@ -23,12 +20,6 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
 
     @ReactMethod
     fun identify(hash:String) {
-        /*Kustomer.identify(hash, new KUSIdentifyListener() {
-     @Override
-     public void onComplete(final boolean success) {
-     // Note: This will be called on background thread
-     }
-     });*/
 
         Kustomer.getInstance().logIn(hash){
             when(it){
@@ -39,9 +30,8 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
     }
 
     @ReactMethod
-    fun presentSupport() {
-        val activity = getCurrentActivity()
-        //Kustomer.showSupport(activity);
+    fun presentSupport(apiKey: String) {
+        Kustomer.getInstance().openNewConversation()
     }
     @ReactMethod
     fun presentKnowledgeBase() {
@@ -50,7 +40,10 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
     }
     @ReactMethod
     fun openConversationsCount(promise:Promise) {
-        //promise.run { resolve(Kustomer.getInstance().observeActiveConversationIds()) };
+        val activeConversationIds = liveData {
+            emitSource(Kustomer.getInstance().observeActiveConversationIds())
+        }
+        promise.resolve(activeConversationIds)
     }
     @ReactMethod
     fun resetTracking() {
