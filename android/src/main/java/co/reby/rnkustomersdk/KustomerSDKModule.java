@@ -33,6 +33,7 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void identify(String hash){
+
         /*Kustomer.identify(hash, new KUSIdentifyListener() {
             @Override
             public void onComplete(final boolean success) {
