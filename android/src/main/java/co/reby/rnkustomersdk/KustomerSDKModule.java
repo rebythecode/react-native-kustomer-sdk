@@ -14,9 +14,7 @@ import com.facebook.react.bridge.Promise;
 
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
-import com.kustomer.kustomersdk.Interfaces.KUSIdentifyListener;
-import com.kustomer.kustomersdk.Kustomer;
-import com.kustomer.kustomersdk.Models.KUSCustomerDescription;
+import com.kustomer.ui.Kustomer;
 
 public class KustomerSDKModule extends ReactContextBaseJavaModule {
 
@@ -35,44 +33,47 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void identify(String hash){
-        Kustomer.identify(hash, new KUSIdentifyListener() {
+        /*Kustomer.identify(hash, new KUSIdentifyListener() {
             @Override
             public void onComplete(final boolean success) {
                 // Note: This will be called on background thread
             }
-        });
+        });*/
     }
 
     @ReactMethod
     public void presentSupport() {
         final Activity activity = getCurrentActivity();
-        Kustomer.showSupport(activity);
+        //Kustomer.showSupport(activity);
+
     }
 
     @ReactMethod
     public void presentKnowledgeBase(){
         final Activity activity = getCurrentActivity();
-        Kustomer.presentKnowledgeBase(activity);
+        //Kustomer.presentKnowledgeBase(activity);
     }
 
     @ReactMethod
     public void openConversationsCount(final Promise promise){
-        promise.resolve(Kustomer.getOpenConversationsCount());
+        //promise.resolve(Kustomer.getOpenConversationsCount());
     }
 
     @ReactMethod
     public void resetTracking(){
-        Kustomer.resetTracking();
+
+        //Kustomer.resetTracking();
     }
 
     @ReactMethod
     public void setCurrentPageName(String screen){
-        Kustomer.setCurrentPageName(screen);
+
+        //Kustomer.setCurrentPageName(screen);
     }
 
     @ReactMethod
     public void describeCustomer(final ReadableMap data){
-        KUSCustomerDescription customerDescription = new KUSCustomerDescription();
+       /* KUSCustomerDescription customerDescription = new KUSCustomerDescription();
 
         String email = data.getString("email");
         if(email != null && !email.isEmpty()){
@@ -94,7 +95,7 @@ public class KustomerSDKModule extends ReactContextBaseJavaModule {
             e.printStackTrace();
         }
 
-        Kustomer.describeCustomer(customerDescription);
+        Kustomer.describeCustomer(customerDescription);*/
     }
 
     @ReactMethod
