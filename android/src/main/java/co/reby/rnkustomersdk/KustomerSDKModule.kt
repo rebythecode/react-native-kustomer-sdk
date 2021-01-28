@@ -1,5 +1,6 @@
 package co.reby.rnkustomersdk;
 
+import android.app.Application
 import androidx.lifecycle.liveData
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -16,6 +17,13 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
     
     init{
         this.reactContext = reactContext
+    }
+
+    companion object {
+        @ReactMethod
+        fun init(application: Application, apiKey: String) {
+            Kustomer.init(application, apiKey)
+        }
     }
 
     @ReactMethod

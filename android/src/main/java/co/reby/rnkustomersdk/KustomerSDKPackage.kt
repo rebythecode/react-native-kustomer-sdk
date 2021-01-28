@@ -15,8 +15,7 @@ class KustomerSDKPackage: ReactPackage {
         return mutableListOf(KustomerSDKModule(reactContext))
     }
 
-
-    override fun createViewManagers(reactContext: ReactApplicationContext?): MutableList<ViewManager<View, ReactShadowNode>> {
+    override fun createViewManagers(reactContext: ReactApplicationContext): MutableList<ViewManager<View, ReactShadowNode<*>>> {
         return mutableListOf();
     }
 
