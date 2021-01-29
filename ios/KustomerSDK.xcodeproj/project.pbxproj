@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B16E55224B4B72B00AF6F0F /* KustomerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */; };
+		A00732F825C454C400E7F398 /* KustomerChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00732F725C454C400E7F398 /* KustomerChat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,8 @@
 		134814201AA4EA6300B7C361 /* libKustomerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKustomerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B16E55024B4B72B00AF6F0F /* KustomerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KustomerSDK.h; sourceTree = "<group>"; };
 		9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KustomerSDK.m; sourceTree = "<group>"; };
+		A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KustomerSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		A00732F725C454C400E7F398 /* KustomerChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KustomerChat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,9 +53,11 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				A00732F725C454C400E7F398 /* KustomerChat.swift */,
 				9B16E55024B4B72B00AF6F0F /* KustomerSDK.h */,
 				9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +92,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -114,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B16E55224B4B72B00AF6F0F /* KustomerSDK.m in Sources */,
+				A00732F825C454C400E7F398 /* KustomerChat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,32 +241,41 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = KustomerSDK;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "KustomerSDK-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = KustomerSDK;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "KustomerSDK-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
