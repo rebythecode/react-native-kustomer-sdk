@@ -19,6 +19,16 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
         this.reactContext = reactContext
     }
 
+    companion object {
+
+        @JvmStatic
+        @ReactMethod
+        fun init(application: Application, apiKey: String) {
+            Kustomer.init(application, apiKey){
+            }
+        }
+    }
+
 
     @ReactMethod
     fun identify(hash:String) {
