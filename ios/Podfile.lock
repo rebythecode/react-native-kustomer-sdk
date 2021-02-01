@@ -1,0 +1,21 @@
+PODS:
+  - KustomerChat (2.0.5)
+
+DEPENDENCIES:
+  - KustomerChat (from `https://github.com/kustomer/kustomer-ios.git`)
+
+EXTERNAL SOURCES:
+  KustomerChat:
+    :git: https://github.com/kustomer/kustomer-ios.git
+
+CHECKOUT OPTIONS:
+  KustomerChat:
+    :commit: 4e60b87d343b5f581112f9fa5ef48ddc41918884
+    :git: https://github.com/kustomer/kustomer-ios.git
+
+SPEC CHECKSUMS:
+  KustomerChat: f8744aac56c052fc81048da4b10592791da586be
+
+PODFILE CHECKSUM: 703662aa57232af2283ca4543acf3ebe232840d8
+
+COCOAPODS: 1.10.0
