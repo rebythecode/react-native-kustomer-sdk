@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A002B55E25C7EA4800349012 /* KustomerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002B55D25C7EA4700349012 /* KustomerSDK.swift */; };
 		A002B56225C7EACF00349012 /* KustomerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A002B56125C7EACF00349012 /* KustomerSDK.m */; };
-		A002B58125C806E000349012 /* kustomer-ios in Frameworks */ = {isa = PBXBuildFile; productRef = A002B58025C806E000349012 /* kustomer-ios */; };
+		A002B58125C806E000349012 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = A002B58025C806E000349012 /* SwiftPackageProductDependency */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A002B58125C806E000349012 /* kustomer-ios in Frameworks */,
+				A002B58125C806E000349012 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +58,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "KustomerSDK" */;
 			buildPhases = (
-				2D299B7E6ABE8CB5EC149198 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -69,7 +68,7 @@
 			);
 			name = KustomerSDK;
 			packageProductDependencies = (
-				A002B58025C806E000349012 /* kustomer-ios */,
+				A002B58025C806E000349012 /* SwiftPackageProductDependency */,
 			);
 			productName = RCTDataManager;
 			productType = "com.apple.product-type.library.static";
@@ -99,7 +98,7 @@
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
 			packageReferences = (
-				A002B57F25C806E000349012 /* XCRemoteSwiftPackageReference "kustomer-ios" */,
+				A002B57F25C806E000349012 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
@@ -109,31 +108,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2D299B7E6ABE8CB5EC149198 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KustomerSDK-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -338,7 +312,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A002B57F25C806E000349012 /* XCRemoteSwiftPackageReference "kustomer-ios" */ = {
+		A002B57F25C806E000349012 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kustomer/kustomer-ios";
 			requirement = {
@@ -349,9 +323,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A002B58025C806E000349012 /* kustomer-ios */ = {
+		A002B58025C806E000349012 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A002B57F25C806E000349012 /* XCRemoteSwiftPackageReference "kustomer-ios" */;
+			package = A002B57F25C806E000349012 /* RemoteSwiftPackageReference */;
 			productName = "kustomer-ios";
 		};
 /* End XCSwiftPackageProductDependency section */
