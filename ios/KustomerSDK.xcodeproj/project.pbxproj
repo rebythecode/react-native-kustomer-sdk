@@ -24,7 +24,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A002B55B25C7EA0600349012 /* libKustomerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKustomerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A002B55D25C7EA4700349012 /* KustomerSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KustomerSDK.swift; sourceTree = "<group>"; };
 		A002B56125C7EACF00349012 /* KustomerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KustomerSDK.m; sourceTree = "<group>"; };
 		A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KustomerSDK-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -47,7 +46,6 @@
 				A002B56125C7EACF00349012 /* KustomerSDK.m */,
 				A002B55D25C7EA4700349012 /* KustomerSDK.swift */,
 				A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */,
-				A002B55B25C7EA0600349012 /* libKustomerSDK.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +66,6 @@
 			);
 			name = KustomerSDK;
 			productName = RCTDataManager;
-			productReference = A002B55B25C7EA0600349012 /* libKustomerSDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
