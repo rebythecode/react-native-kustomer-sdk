@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		012F989781B5ADF151AF8E91 /* Pods_KustomerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D916C5F886576AD3D51AC8D9 /* Pods_KustomerSDK.framework */; };
 		A002B55E25C7EA4800349012 /* KustomerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002B55D25C7EA4700349012 /* KustomerSDK.swift */; };
 		A002B56225C7EACF00349012 /* KustomerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A002B56125C7EACF00349012 /* KustomerSDK.m */; };
+		A002B58125C806E000349012 /* kustomer-ios in Frameworks */ = {isa = PBXBuildFile; productRef = A002B58025C806E000349012 /* kustomer-ios */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,12 +25,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		89A886E88B0B5B595E1E95CA /* Pods-KustomerSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KustomerSDK.release.xcconfig"; path = "Target Support Files/Pods-KustomerSDK/Pods-KustomerSDK.release.xcconfig"; sourceTree = "<group>"; };
-		9F1FE89260D1008EB09B29EF /* Pods-KustomerSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KustomerSDK.debug.xcconfig"; path = "Target Support Files/Pods-KustomerSDK/Pods-KustomerSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		A002B55D25C7EA4700349012 /* KustomerSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KustomerSDK.swift; sourceTree = "<group>"; };
 		A002B56125C7EACF00349012 /* KustomerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KustomerSDK.m; sourceTree = "<group>"; };
 		A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KustomerSDK-Bridging-Header.h"; sourceTree = "<group>"; };
-		D916C5F886576AD3D51AC8D9 /* Pods_KustomerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KustomerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				012F989781B5ADF151AF8E91 /* Pods_KustomerSDK.framework in Frameworks */,
+				A002B58125C806E000349012 /* kustomer-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,26 +48,7 @@
 				A002B56125C7EACF00349012 /* KustomerSDK.m */,
 				A002B55D25C7EA4700349012 /* KustomerSDK.swift */,
 				A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */,
-				59C8F82DB4AF41099651F17F /* Pods */,
-				D9E9DDBCBA11E8E00F6100F5 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		59C8F82DB4AF41099651F17F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9F1FE89260D1008EB09B29EF /* Pods-KustomerSDK.debug.xcconfig */,
-				89A886E88B0B5B595E1E95CA /* Pods-KustomerSDK.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		D9E9DDBCBA11E8E00F6100F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D916C5F886576AD3D51AC8D9 /* Pods_KustomerSDK.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,6 +68,9 @@
 			dependencies = (
 			);
 			name = KustomerSDK;
+			packageProductDependencies = (
+				A002B58025C806E000349012 /* kustomer-ios */,
+			);
 			productName = RCTDataManager;
 			productType = "com.apple.product-type.library.static";
 		};
@@ -117,6 +98,9 @@
 				Base,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
+			packageReferences = (
+				A002B57F25C806E000349012 /* XCRemoteSwiftPackageReference "kustomer-ios" */,
+			);
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
 			projectRoot = "";
@@ -211,7 +195,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -263,7 +250,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -277,7 +267,6 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F1FE89260D1008EB09B29EF /* Pods-KustomerSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
@@ -286,7 +275,11 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = KustomerSDK;
@@ -299,7 +292,6 @@
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89A886E88B0B5B595E1E95CA /* Pods-KustomerSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
@@ -308,7 +300,11 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = KustomerSDK;
@@ -340,6 +336,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A002B57F25C806E000349012 /* XCRemoteSwiftPackageReference "kustomer-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kustomer/kustomer-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A002B58025C806E000349012 /* kustomer-ios */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A002B57F25C806E000349012 /* XCRemoteSwiftPackageReference "kustomer-ios" */;
+			productName = "kustomer-ios";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
 }
