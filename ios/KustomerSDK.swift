@@ -8,4 +8,14 @@ class KustomerSDK: NSObject {
     public func presentSupport(){
         Kustomer.show()
     }
+
+    @objc
+    public func presentKnowledgeBase(){
+        Kustomer.show(preferredView: .knowledgeBase)
+    }
+
+    @objc 
+    public func resetTracking(){
+        Kustomer.logOut({ error in })
+    }
 }
