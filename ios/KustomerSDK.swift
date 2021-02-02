@@ -20,16 +20,15 @@ class KustomerSDK: NSObject {
     }
 
     @objc 
-    public func identify(hash: String){
-       Kustomer.identifyCurrentCustomer(jwt: hash, { result in
-                switch result {
+    public func identify(_ hash: String){
+       Kustomer.logIn(jwt: String(hash)){ result in
+            switch result {
                 case .success:
-                    print("Success")
+                print("success")
                 case .failure(let error):
-                    print(error.localizedDescription)
-                }
+                print("there was a problem \(error.localizedDescription)")
             }
-       )
+        }
     }
     
 
