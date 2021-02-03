@@ -2,9 +2,7 @@ package co.reby.rnkustomersdk;
 
 import androidx.lifecycle.liveData
 import com.facebook.react.bridge.*
-import com.facebook.stetho.json.ObjectMapper
-
-
+import com.google.gson.Gson
 import com.kustomer.core.models.KusResult
 import com.kustomer.core.models.chat.KusCustomerDescribeAttributes
 import com.kustomer.core.models.chat.KusEmail
@@ -40,13 +38,13 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
         val phone = data.getString("phone")
         val custom = data.getMap("custom")
         val convertedCustom = custom?.let { convertMapToJson(it) }
-        val objectMapper = ObjectMapper()
+
 
 
         val attributes = KusCustomerDescribeAttributes(
                 emails = listOf(KusEmail(email!!)),
                 phones = listOf(KusPhone(phone!!)),
-                custom = objectMapper.convertValue(convertedCustom!!, HashMap<String, String>().javaClass)
+                custom = Gson().fromJson(convertedCustom.toString(), HashMap<String, String>().javaClass)
         )
 
       Kustomer.getInstance().describeCustomer(attributes)

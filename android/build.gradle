@@ -81,6 +81,7 @@ dependencies {
     implementation 'com.kustomer.chat:ui:2.0.+'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYLCE_VERSION"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$LIFECYLCE_VERSION"
+    implementation 'com.google.code.gson:gson:2.8.6'
 
 }
 
