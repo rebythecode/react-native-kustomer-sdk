@@ -6,9 +6,8 @@ import com.kustomer.core.models.KusResult
 import com.kustomer.core.models.chat.KusCustomerDescribeAttributes
 import com.kustomer.core.models.chat.KusEmail
 import com.kustomer.core.models.chat.KusPhone
-import com.kustomer.ui.Kustomer;
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.kustomer.ui.Kustomer
+import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 
 class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJavaModule(reactContext) {
@@ -48,7 +47,7 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
                 custom = Gson().fromJson(convertedCustom.toString(), HashMap<String, String>().javaClass)
         )
 
-        GlobalScope.launch {
+        runBlocking {
             Kustomer.getInstance().describeCustomer(attributes)
         }
 
