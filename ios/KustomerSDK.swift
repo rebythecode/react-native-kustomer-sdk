@@ -33,9 +33,26 @@ class KustomerSDK: NSObject {
     
 
     @objc
-    public func describeCustomer(data: Dictionary){
+    public func describeCustomer(_ data: Dictionary<String, AnyObject>){
 
-        Kustomer.chatProvider.describeCurrentCustomer(phone:data.phone, email: data.email, custom: data.custom) { result in
+        let email = data["email"] as? String
+
+        let phone = data["phone"] as? String
+
+
+        /*if data["custom"] != nil {
+
+            if let object = data["custom"] {
+                for key in object {
+                    let value = (data["custom"] as? [AnyHashable : Any])?[key] as? String
+                    if (value?.count ?? 0) != 0 {
+                        custom[key] = value
+                    }
+                }
+            }
+        }*/
+
+        Kustomer.chatProvider.describeCurrentCustomer(phone: phone, email: email) { result in
                     switch result {
                         case .success:
                         print("ok")
