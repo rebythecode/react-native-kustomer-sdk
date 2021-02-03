@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B16E55224B4B72B00AF6F0F /* KustomerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */; };
+		A002B55E25C7EA4800349012 /* KustomerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A002B55D25C7EA4700349012 /* KustomerSDK.swift */; };
+		A002B56225C7EACF00349012 /* KustomerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A002B56125C7EACF00349012 /* KustomerSDK.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +24,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libKustomerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKustomerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B16E55024B4B72B00AF6F0F /* KustomerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KustomerSDK.h; sourceTree = "<group>"; };
-		9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KustomerSDK.m; sourceTree = "<group>"; };
+		A002B55D25C7EA4700349012 /* KustomerSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KustomerSDK.swift; sourceTree = "<group>"; };
+		A002B56125C7EACF00349012 /* KustomerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KustomerSDK.m; sourceTree = "<group>"; };
+		A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KustomerSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,20 +40,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		134814211AA4EA7D00B7C361 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				134814201AA4EA6300B7C361 /* libKustomerSDK.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				9B16E55024B4B72B00AF6F0F /* KustomerSDK.h */,
-				9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */,
-				134814211AA4EA7D00B7C361 /* Products */,
+				A002B56125C7EACF00349012 /* KustomerSDK.m */,
+				A002B55D25C7EA4700349012 /* KustomerSDK.swift */,
+				A00732F625C454C400E7F398 /* KustomerSDK-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,8 +65,9 @@
 			dependencies = (
 			);
 			name = KustomerSDK;
+			packageProductDependencies = (
+			);
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libKustomerSDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -87,6 +81,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -99,6 +94,8 @@
 				Base,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
+			packageReferences = (
+			);
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
 			projectRoot = "";
@@ -113,7 +110,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B16E55224B4B72B00AF6F0F /* KustomerSDK.m in Sources */,
+				A002B56225C7EACF00349012 /* KustomerSDK.m in Sources */,
+				A002B55E25C7EA4800349012 /* KustomerSDK.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +164,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
@@ -218,7 +216,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
@@ -234,32 +232,41 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = KustomerSDK;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "KustomerSDK-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = KustomerSDK;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "KustomerSDK-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -20,19 +20,18 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-xcshareddata/
-*.xcworkspacedata
+project.xcworkspace
+ios/Pods
 
 # Android/IntelliJ
 #
 build/
+android/app/release
 .idea
 .gradle
+.settings
 local.properties
 *.iml
-android/gradle/
-android/gradlew
-android/gradlew.bat
 
 # node.js
 #
@@ -44,10 +43,30 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
-!debug.keystore
 
-# Visual Studio Code (Java plugin)
+# CocoaPods
+/ios/Pods/
+
+# react-native-config codegen
+ios/tmp.xcconfig
+
+# fastlane
 #
-.classpath
-.project
-.settings/
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle
+
+test-report/
+.vscode
+
+# Other
+#
+.env
