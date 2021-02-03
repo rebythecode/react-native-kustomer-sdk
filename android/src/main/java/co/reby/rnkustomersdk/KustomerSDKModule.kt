@@ -1,6 +1,5 @@
 package co.reby.rnkustomersdk;
 
-import androidx.lifecycle.liveData
 import com.facebook.react.bridge.*
 import com.google.gson.Gson
 import com.kustomer.core.models.KusResult
@@ -8,6 +7,8 @@ import com.kustomer.core.models.chat.KusCustomerDescribeAttributes
 import com.kustomer.core.models.chat.KusEmail
 import com.kustomer.core.models.chat.KusPhone
 import com.kustomer.ui.Kustomer;
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJavaModule(reactContext) {
@@ -32,7 +33,7 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
     }
 
     @ReactMethod
-    suspend fun describeCustomer(data: ReadableMap){
+    fun describeCustomer(data: ReadableMap){
 
         val email = data.getString("email")
         val phone = data.getString("phone")
@@ -47,7 +48,9 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
                 custom = Gson().fromJson(convertedCustom.toString(), HashMap<String, String>().javaClass)
         )
 
-      Kustomer.getInstance().describeCustomer(attributes)
+        GlobalScope.launch {
+            Kustomer.getInstance().describeCustomer(attributes)
+        }
 
     }
     
@@ -57,27 +60,8 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
     }
 
     @ReactMethod
-    fun presentKnowledgeBase() {
-        val activity = getCurrentActivity()
-        //Kustomer.presentKnowledgeBase(activity);
-    }
-
-    @ReactMethod
-    fun openConversationsCount(promise:Promise) {
-        val activeConversationIds = liveData {
-            emitSource(Kustomer.getInstance().observeActiveConversationIds())
-        }
-        promise.resolve(activeConversationIds)
-    }
-
-    @ReactMethod
     fun resetTracking() {
         Kustomer.getInstance().logOut()
-    }
-
-    @ReactMethod
-    fun setCurrentPageName(screen:String) {
-        //Kustomer.setCurrentPageName(screen);
     }
 
     private fun convertMapToJson(readableMap:ReadableMap):JSONObject {
