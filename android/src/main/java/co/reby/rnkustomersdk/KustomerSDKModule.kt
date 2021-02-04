@@ -55,7 +55,7 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
     
     @ReactMethod
     fun presentSupport(apiKey: String) {
-        Kustomer.getInstance().openNewConversation()
+        Kustomer.getInstance().open()
     }
 
     @ReactMethod
