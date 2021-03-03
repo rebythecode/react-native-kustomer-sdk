@@ -21,11 +21,11 @@ class KustomerSDKModule(reactContext:ReactApplicationContext):ReactContextBaseJa
 
 
     @ReactMethod
-    fun identify(hash:String) {
+    fun identify(hash:String, promise: Promise) {
 
         Kustomer.getInstance().logIn(hash){
             when(it){
-                is KusResult.Success -> it.data
+                is KusResult.Success -> promise.resolve(true)
                 is KusResult.Error -> it.exception.localizedMessage
             }
         }

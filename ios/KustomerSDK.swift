@@ -20,17 +20,18 @@ class KustomerSDK: NSObject {
     }
 
     @objc 
-    public func identify(_ hash: NSString){
-        if(Kustomer.chatProvider.currentCustomer() == nil){
+    public func identify(_ hash: NSString, resolver resolve: @escaping RCTPromiseResolveBlock,
+                         rejecter reject: @escaping RCTPromiseRejectBlock) -> Void{
+        
             Kustomer.logIn(jwt: hash as String){ result in
                 switch result {
                     case .success:
-                    print("success")
+                    resolve("success")
                     case .failure(let error):
-                    print("there was a problem \(error.localizedDescription)")
+                        reject("error",error.localizedDescription, error)
                 }
             }
-        }
+        
     }
     
 
