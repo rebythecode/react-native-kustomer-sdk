@@ -2,6 +2,8 @@ package co.reby.rnkustomersdk
 
 import com.facebook.react.bridge.*
 import com.kustomer.core.models.*
+import com.kustomer.core.chat.*
+import java.lang.Object
 import com.kustomer.ui.Kustomer
 
 class KustomerSDKModule(reactContext: ReactApplicationContext) :
@@ -12,7 +14,7 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
     }
 
     @ReactMethod
-    fun identify(hash: String?) {
+    fun identify(hash: String) {
         Kustomer.getInstance().logIn(hash){
             when (it) {
                 is KusResult.Success -> it.data
@@ -28,10 +30,7 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
 
     @ReactMethod
     fun openConversationsCount(promise: Promise) {
-        val activeConversationIds = liveData {
-            emitSource(Kustomer.getInstance().observeActiveConversationIds())
-        }
-        promise.resolve(activeConversationIds)
+        promise.resolve(Kustomer.getInstance().observeActiveConversationIds())
     }
 
     @ReactMethod
@@ -42,12 +41,12 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
     @ReactMethod
     fun describeCustomer(data: ReadableMap) {
         val email: String? = data.getString("email")
-        val emails = null
+        var emails = null
         if (email != null && !email.isEmpty()) {
             emails = listOf(KusEmail(email))
         }
         val phone: String? = data.getString("phone")
-        val phones = null
+        var phones = null
         if (phone != null && !phone.isEmpty()) {
             phones = listOf(KusPhone(phone))
         }
@@ -68,29 +67,25 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
             phones = phones,
             custom = custom     
         )
-        val result = Kustomer.getInstance().describeCustomer(attributes)
-        when (result) {
-            is KusResult.Success -> //Success
-            is KusResult.Error -> //Error
-        }
+        Kustomer.getInstance().describeCustomer(attributes)
     }
 
     private fun convertMapToJson(readableMap: ReadableMap): JSONObject {
-        val `object` = JSONObject()
+        var result = JSONObject()
         val iterator: ReadableMapKeySetIterator = readableMap.keySetIterator()
         while (iterator.hasNextKey()) {
             val key: String = iterator.nextKey()
             when (readableMap.getType(key)) {
-                Boolean -> `object`.put(key, readableMap.getBoolean(key))
-                Number -> `object`.put(key, readableMap.getDouble(key))
+                Boolean -> result.put(key, readableMap.getBoolean(key))
+                Number -> result.put(key, readableMap.getDouble(key))
                 String -> {
                     val value: String = readableMap.getString(key)
                     if (value != null && !value.isEmpty()) {
-                        `object`.put(key, value)
+                        result.put(key, value)
                     }
                 }
             }
         }
-        return object
+        return result
     }
 }
