@@ -1,9 +1,7 @@
 package co.reby.rnkustomersdk
 
 import com.facebook.react.bridge.*
-import com.kustomer.core.models.KusResult
-import com.kustomer.core.models.KusEmail
-import com.kustomer.core.models.KusPhone
+import com.kustomer.core.models.*
 import com.kustomer.ui.Kustomer
 
 class KustomerSDKModule(reactContext: ReactApplicationContext) :
@@ -43,12 +41,12 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
 
     @ReactMethod
     fun describeCustomer(data: ReadableMap) {
-        val email: String = data.getString("email")
+        val email: String? = data.getString("email")
         val emails = null
         if (email != null && !email.isEmpty()) {
             emails = listOf(KusEmail(email))
         }
-        val phone: String = data.getString("phone")
+        val phone: String? = data.getString("phone")
         val phones = null
         if (phone != null && !phone.isEmpty()) {
             phones = listOf(KusPhone(phone))
@@ -56,7 +54,7 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
 
         val custom = null
         try {
-            val customData: ReadableMap = data.getMap("custom")
+            val customData: ReadableMap? = data.getMap("custom")
             if (customData != null) {
                 val customObject: JSONObject = convertMapToJson(customData)
                 custom = customObject
@@ -78,17 +76,17 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
     }
 
     private fun convertMapToJson(readableMap: ReadableMap): JSONObject {
-        val object = JSONObject()
+        val `object` = JSONObject()
         val iterator: ReadableMapKeySetIterator = readableMap.keySetIterator()
         while (iterator.hasNextKey()) {
             val key: String = iterator.nextKey()
             when (readableMap.getType(key)) {
-                Boolean -> object.put(key, readableMap.getBoolean(key))
-                Number -> object.put(key, readableMap.getDouble(key))
+                Boolean -> `object`.put(key, readableMap.getBoolean(key))
+                Number -> `object`.put(key, readableMap.getDouble(key))
                 String -> {
                     val value: String = readableMap.getString(key)
                     if (value != null && !value.isEmpty()) {
-                        object.put(key, value)
+                        `object`.put(key, value)
                     }
                 }
             }
