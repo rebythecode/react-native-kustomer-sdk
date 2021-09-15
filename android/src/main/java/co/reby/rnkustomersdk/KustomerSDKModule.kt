@@ -2,8 +2,9 @@ package co.reby.rnkustomersdk
 
 import com.facebook.react.bridge.*
 import com.kustomer.core.models.*
-import com.kustomer.core.chat.*
-import java.lang.Object
+import com.kustomer.core.models.chat.*
+import org.json.JSONObject
+import org.json.JSONException
 import com.kustomer.ui.Kustomer
 
 class KustomerSDKModule(reactContext: ReactApplicationContext) :
@@ -51,7 +52,7 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
             phones = listOf(KusPhone(phone))
         }
 
-        val custom = null
+        var custom = null
         try {
             val customData: ReadableMap? = data.getMap("custom")
             if (customData != null) {
@@ -79,7 +80,7 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
                 Boolean -> result.put(key, readableMap.getBoolean(key))
                 Number -> result.put(key, readableMap.getDouble(key))
                 String -> {
-                    val value: String = readableMap.getString(key)
+                    val value: String? = readableMap.getString(key)
                     if (value != null && !value.isEmpty()) {
                         result.put(key, value)
                     }
