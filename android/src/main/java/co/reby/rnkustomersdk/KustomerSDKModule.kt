@@ -40,24 +40,24 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
     }
 
     @ReactMethod
-    fun describeCustomer(data: ReadableMap) {
+    suspend fun describeCustomer(data: ReadableMap) {
         val email: String? = data.getString("email")
-        var emails = null
+        var emails: List<KusEmail>? = null
         if (email != null && !email.isEmpty()) {
             emails = listOf(KusEmail(email))
         }
         val phone: String? = data.getString("phone")
-        var phones = null
+        var phones: List<KusPhone>? = null
         if (phone != null && !phone.isEmpty()) {
             phones = listOf(KusPhone(phone))
         }
 
-        var custom = null
+        var custom: Map<String, Any>? = null
         try {
             val customData: ReadableMap? = data.getMap("custom")
             if (customData != null) {
-                val customObject: JSONObject = convertMapToJson(customData)
-                custom = customObject
+                val prova = toMap(customData)
+                custom = prova
             }
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -71,22 +71,25 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
         Kustomer.getInstance().describeCustomer(attributes)
     }
 
-    private fun convertMapToJson(readableMap: ReadableMap): JSONObject {
-        var result = JSONObject()
+    private fun toMap(readableMap: ReadableMap): Map<String, Any> {
+        val map: MutableMap<String, Any> = HashMap()
         val iterator: ReadableMapKeySetIterator = readableMap.keySetIterator()
+    
         while (iterator.hasNextKey()) {
             val key: String = iterator.nextKey()
-            when (readableMap.getType(key)) {
-                Boolean -> result.put(key, readableMap.getBoolean(key))
-                Number -> result.put(key, readableMap.getDouble(key))
-                String -> {
+            val type: ReadableType = readableMap.getType(key)
+
+            when (type) {
+                ReadableType.Boolean -> map.put(key, readableMap.getBoolean(key))
+                ReadableType.Number -> map.put(key, readableMap.getDouble(key))
+                ReadableType.String -> {
                     val value: String? = readableMap.getString(key)
                     if (value != null && !value.isEmpty()) {
-                        result.put(key, value)
-                    }
+                        map.put(key, value)
+                    }   
                 }
             }
         }
-        return result
+        return map 
     }
 }
