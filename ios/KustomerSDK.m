@@ -8,7 +8,7 @@ RCT_EXTERN_METHOD(presentSupport)
 
 RCT_EXTERN_METHOD(openConversationsCount)
 
-RCT_EXTERN_METHOD(logout)
+RCT_EXTERN_METHOD(resetTracking)
 
 RCT_EXTERN_METHOD(describeCustomer: (NSDictionary *)data)
 

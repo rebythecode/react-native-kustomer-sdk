@@ -31,8 +31,8 @@
      return Kustomer.openConversationCount()
   }
 
-  @objc(logout)
-  func logout() -> Void {
+  @objc(resetTracking)
+  func resetTracking() -> Void {
     DispatchQueue.main.async {
      Kustomer.logOut({ error in
          if error != nil {
