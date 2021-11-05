@@ -8,7 +8,7 @@
   @objc(identify:)
   func identify(hash: String) -> Void {
     DispatchQueue.main.async {
-     Kustomer.identifyCurrentCustomer(hash: hash, { result in
+     Kustomer.logIn(jwt: hash, { result in
        switch result {
        case .success:
          print("Success")
@@ -44,28 +44,20 @@
 
   @objc(describeCustomer:)
   func describeCustomer(data: [AnyHashable : Any]) -> Void {
-   let emails = [String]()
+   var emails = [String]()
    let email = data["email"] as? String
    if email?.count != 0 {
-    emails.append(email)
+    emails.append(email!)
    }
-   let phones = [String]()
+   var phones = [String]()
    let phone = data["phone"] as? String
    if phone?.count != 0 {
-    phones.append(phone)
+    phones.append(phone!)
    }
-   let customs = [AnyHashable : Any]()
-   if data.custom != nil {
-    var custom: [AnyHashable : Any] = [:]
-    if let object = data["custom"] {
-     for key in object {
-      let value = (data["custom"] as? [AnyHashable : Any])?[key] as? String
-      if value?.count != 0 {
-       custom[key] = value
-      }
-     }
-    }
-    customs = custom
+   var customs = [String : Any]()
+   let custom = data["custom"] as? [String: Any]
+   if custom != nil {
+    customs = custom!
    }
    Kustomer.chatProvider.describeCurrentCustomer(phones: phones, emails: emails, custom: customs) { result in
     switch result {

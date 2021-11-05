@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F07AE4A326F2366000DC4835 /* KustomerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */; };
-		F07AE4A626F236C900DC4835 /* KustomerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07AE4A526F236C900DC4835 /* KustomerSDK.swift */; };
 		F07AE4A926F23AD000DC4835 /* kustomer-ios in Frameworks */ = {isa = PBXBuildFile; productRef = F07AE4A826F23AD000DC4835 /* kustomer-ios */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		134814201AA4EA6300B7C361 /* libKustomerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKustomerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KustomerSDK.m; sourceTree = "<group>"; };
 		F07AE4A426F236C900DC4835 /* KustomerSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KustomerSDK-Bridging-Header.h"; sourceTree = "<group>"; };
-		F07AE4A526F236C900DC4835 /* KustomerSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KustomerSDK.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +52,6 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				F07AE4A526F236C900DC4835 /* KustomerSDK.swift */,
 				9B16E55124B4B72B00AF6F0F /* KustomerSDK.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				F07AE4A426F236C900DC4835 /* KustomerSDK-Bridging-Header.h */,
@@ -125,7 +122,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F07AE4A626F236C900DC4835 /* KustomerSDK.swift in Sources */,
 				F07AE4A326F2366000DC4835 /* KustomerSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
