@@ -6,6 +6,8 @@ import com.kustomer.core.models.chat.*
 import org.json.JSONObject
 import org.json.JSONException
 import com.kustomer.ui.Kustomer
+import com.google.gson.Gson
+import kotlinx.coroutines.runBlocking
 
 class KustomerSDKModule(reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext) {
@@ -57,25 +59,24 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
         }
     }
 
-    private fun toMap(readableMap: ReadableMap): Map<String, Any> {
-        val map: MutableMap<String, Any> = HashMap()
-        val iterator: ReadableMapKeySetIterator = readableMap.keySetIterator()
-    
-        while (iterator.hasNextKey()) {
-            val key: String = iterator.nextKey()
-            val type: ReadableType = readableMap.getType(key)
-
-            when (type) {
-                ReadableType.Boolean -> map.put(key, readableMap.getBoolean(key))
-                ReadableType.Number -> map.put(key, readableMap.getDouble(key))
+    private fun convertMapToJson(readableMap:ReadableMap):JSONObject {
+        val jsonObject = JSONObject()
+        val iterator = readableMap.keySetIterator()
+        while (iterator.hasNextKey())
+        {
+            val key = iterator.nextKey()
+            when (readableMap.getType(key)) {
+                ReadableType.Boolean -> jsonObject.put(key, readableMap.getBoolean(key))
+                ReadableType.Number -> jsonObject.put(key, readableMap.getDouble(key))
                 ReadableType.String -> {
-                    val value: String? = readableMap.getString(key)
-                    if (value != null && !value.isEmpty()) {
-                        map.put(key, value)
-                    }   
+                    val value = readableMap.getString(key)
+                    if (value != null && !value.isEmpty())
+                    {
+                        jsonObject.put(key, value)
+                    }
                 }
             }
         }
-        return map 
+        return jsonObject
     }
 }
