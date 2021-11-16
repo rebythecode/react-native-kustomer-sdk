@@ -41,34 +41,20 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
 
     @ReactMethod
     suspend fun describeCustomer(data: ReadableMap) {
-        val email: String? = data.getString("email")
-        var emails: List<KusEmail>? = null
-        if (email != null && !email.isEmpty()) {
-            emails = listOf(KusEmail(email))
-        }
-        val phone: String? = data.getString("phone")
-        var phones: List<KusPhone>? = null
-        if (phone != null && !phone.isEmpty()) {
-            phones = listOf(KusPhone(phone))
-        }
-
-        var custom: Map<String, Any>? = null
-        try {
-            val customData: ReadableMap? = data.getMap("custom")
-            if (customData != null) {
-                val prova = toMap(customData)
-                custom = prova
-            }
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
+        val email = data.getString("email")
+        val phone = data.getString("phone")
+        val custom = data.getMap("custom")
+        val convertedCustom = custom?.let { convertMapToJson(it) }
 
         val attributes = KusCustomerDescribeAttributes(
-            emails = emails,
-            phones = phones,
-            custom = custom     
+                emails = listOf(KusEmail(email!!)),
+                phones = listOf(KusPhone(phone!!)),
+                custom = Gson().fromJson(convertedCustom.toString(), HashMap<String, String>().javaClass)
         )
-        Kustomer.getInstance().describeCustomer(attributes)
+
+        runBlocking {
+            Kustomer.getInstance().describeCustomer(attributes)
+        }
     }
 
     private fun toMap(readableMap: ReadableMap): Map<String, Any> {
