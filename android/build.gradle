@@ -101,7 +101,6 @@ dependencies {
     implementation 'com.kustomer.chat:ui:2.9.2'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYLCE_VERSION"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$LIFECYLCE_VERSION"
-    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 def configureReactNativePom(def pom) {

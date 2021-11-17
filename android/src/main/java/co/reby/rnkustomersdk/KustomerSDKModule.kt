@@ -46,12 +46,11 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
         val email = data.getString("email")
         val phone = data.getString("phone")
         val custom = data.getMap("custom")
-        val convertedCustom = custom?.let { convertMapToJson(it) }
 
         val attributes = KusCustomerDescribeAttributes(
                 emails = listOf(KusEmail(email!!)),
                 phones = listOf(KusPhone(phone!!)),
-                custom = Gson().fromJson(convertedCustom.toString(), HashMap<String, String>().javaClass)
+                custom = toMap(customData!!)
         )
 
         runBlocking {
@@ -59,24 +58,25 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
         }
     }
 
-    private fun convertMapToJson(readableMap:ReadableMap):JSONObject {
-        val jsonObject = JSONObject()
-        val iterator = readableMap.keySetIterator()
-        while (iterator.hasNextKey())
-        {
-            val key = iterator.nextKey()
-            when (readableMap.getType(key)) {
-                ReadableType.Boolean -> jsonObject.put(key, readableMap.getBoolean(key))
-                ReadableType.Number -> jsonObject.put(key, readableMap.getDouble(key))
+    private fun toMap(readableMap: ReadableMap): Map<String, Any> {
+        val map: MutableMap<String, Any> = HashMap()
+        val iterator: ReadableMapKeySetIterator = readableMap.keySetIterator()
+    
+        while (iterator.hasNextKey()) {
+            val key: String = iterator.nextKey()
+            val type: ReadableType = readableMap.getType(key)
+
+            when (type) {
+                ReadableType.Boolean -> map.put(key, readableMap.getBoolean(key))
+                ReadableType.Number -> map.put(key, readableMap.getDouble(key))
                 ReadableType.String -> {
-                    val value = readableMap.getString(key)
-                    if (value != null && !value.isEmpty())
-                    {
-                        jsonObject.put(key, value)
-                    }
+                    val value: String? = readableMap.getString(key)
+                    if (value != null && !value.isEmpty()) {
+                        map.put(key, value)
+                    }   
                 }
             }
         }
-        return jsonObject
+        return map 
     }
 }
