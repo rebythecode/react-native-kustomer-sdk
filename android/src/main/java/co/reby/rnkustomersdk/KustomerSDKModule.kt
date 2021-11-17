@@ -6,7 +6,6 @@ import com.kustomer.core.models.chat.*
 import org.json.JSONObject
 import org.json.JSONException
 import com.kustomer.ui.Kustomer
-import com.google.gson.Gson
 import kotlinx.coroutines.runBlocking
 
 class KustomerSDKModule(reactContext: ReactApplicationContext) :
@@ -50,7 +49,7 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
         val attributes = KusCustomerDescribeAttributes(
                 emails = listOf(KusEmail(email!!)),
                 phones = listOf(KusPhone(phone!!)),
-                custom = toMap(customData!!)
+                custom = toMap(custom!!)
         )
 
         runBlocking {
