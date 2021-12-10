@@ -39,7 +39,9 @@ pod 'KustomerChat'
 Initialize Kustomer in your `MainApplication` `onCreate` function:
 
 ```java
-import com.kustomer.kustomersdk.Kustomer;
+import com.kustomer.core.models.KusResult;
+import com.kustomer.ui.Kustomer;
+import android.util.Log;
 
 public class MainApplication extends Application implements ReactApplication {
   @Override
