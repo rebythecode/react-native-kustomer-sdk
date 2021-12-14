@@ -5,23 +5,20 @@
  @objc(KustomerSDK)
  class KustomerSDK: NSObject {
 
-  @objc(identify:)
-  func identify(_ hash: NSString, resolver resolve: @escaping RCTPromiseResolveBlock,
-                          rejecter reject: @escaping RCTPromiseRejectBlock) -> Void{
-
-         if(Kustomer.chatProvider.currentCustomer() == nil){
-             Kustomer.logIn(jwt: hash as String){ result in
-                 switch result {
-                     case .success:
-                     resolve(true)
-                     case .failure(let error):
-                         print(error.localizedDescription)
-                         reject("error",error.localizedDescription,error)
-                 }
-             }
-         }
-
-     }
+  @objc func identify(_ hash: NSString, resolver resolve: @escaping RCTPromiseResolveBlock,
+                          rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+    if(Kustomer.chatProvider.currentCustomer() == nil) {
+      Kustomer.logIn(jwt: hash as String) { result in
+        switch result {
+          case .success:
+            resolve(true)
+          case .failure(let error):
+            print(error.localizedDescription)
+            reject("error",error.localizedDescription,error)
+        }
+      }
+    }
+  }
 
   @objc(presentSupport)
   func presentSupport() -> Void {
