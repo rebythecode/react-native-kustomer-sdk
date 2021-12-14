@@ -57,8 +57,8 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
         }
     }
 
-    private fun toMap(readableMap: ReadableMap): Map<String, Any> {
-        val map: MutableMap<String, Any> = HashMap()
+    private fun toMap(readableMap: ReadableMap): Map<String, String> {
+        val map: MutableMap<String, String> = HashMap()
         val iterator: ReadableMapKeySetIterator = readableMap.keySetIterator()
     
         while (iterator.hasNextKey()) {
@@ -66,12 +66,12 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
             val type: ReadableType = readableMap.getType(key)
 
             when (type) {
-                ReadableType.Boolean -> map.put(key, readableMap.getBoolean(key))
-                ReadableType.Number -> map.put(key, readableMap.getDouble(key))
+                ReadableType.Boolean -> map[key] = readableMap.getBoolean(key).toString()
+                ReadableType.Number -> map[key] = readableMap.getDouble(key).toString()
                 ReadableType.String -> {
                     val value: String? = readableMap.getString(key)
                     if (value != null && !value.isEmpty()) {
-                        map.put(key, value)
+                        map[key] = value
                     }   
                 }
             }

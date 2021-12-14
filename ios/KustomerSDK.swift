@@ -13,7 +13,7 @@
              Kustomer.logIn(jwt: hash as String){ result in
                  switch result {
                      case .success:
-                     resolve("success")
+                     resolve(true)
                      case .failure(let error):
                          print(error.localizedDescription)
                          reject("error",error.localizedDescription,error)
