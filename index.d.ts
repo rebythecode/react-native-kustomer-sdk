@@ -1,4 +1,4 @@
-declare module "@rebythecode/react-native-kustomer-sdk" {
+declare module "react-native-kustomer-sdk" {
   class KustomerSDK {
     static identify(hash: string): Promise<boolean, string>;
 
