@@ -9,6 +9,7 @@
     "android",
     "index.js",
     "ios",
+    "index.d.ts",
     "react-native-kustomer-sdk.podspec"
   ],
   "scripts": {
