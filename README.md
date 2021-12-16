@@ -148,7 +148,7 @@ import KustomerSDK from "react-native-kustomer-sdk";
 
 ### Methods
 
-#### identify(token: String): void
+#### identify(token: String): Promise<boolean>
 
 Identify current user with a token, in order to recover its previous data, such as conversations and profile. This method is a promise so it will need some handling.
 

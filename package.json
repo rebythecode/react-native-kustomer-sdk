@@ -1,7 +1,7 @@
 {
   "name": "react-native-kustomer-sdk",
   "title": "React Native Kustomer SDK",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Kustomer SDK for React Native",
   "main": "index.js",
   "files": [
@@ -9,6 +9,7 @@
     "android",
     "index.js",
     "ios",
+    "index.d.ts",
     "react-native-kustomer-sdk.podspec"
   ],
   "scripts": {
