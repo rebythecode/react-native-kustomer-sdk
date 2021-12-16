@@ -1,65 +1,34 @@
 // android/build.gradle
 
-// based on:
-//
-// * https://github.com/facebook/react-native/blob/0.60-stable/template/android/build.gradle
-//   original location:
-//   - https://github.com/facebook/react-native/blob/0.58-stable/local-cli/templates/HelloWorld/android/build.gradle
-//
-// * https://github.com/facebook/react-native/blob/0.60-stable/template/android/app/build.gradle
-//   original location:
-//   - https://github.com/facebook/react-native/blob/0.58-stable/local-cli/templates/HelloWorld/android/app/build.gradle
-
-def DEFAULT_COMPILE_SDK_VERSION = 28
-def DEFAULT_BUILD_TOOLS_VERSION = '28.0.3'
-def DEFAULT_MIN_SDK_VERSION = 21
-def DEFAULT_TARGET_SDK_VERSION = 28
-def LIFECYLCE_VERSION = "2.3.1"
-
-def safeExtGet(prop, fallback) {
-    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
-}
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'maven'
+configurations.maybeCreate("default")
 
 buildscript {
-    ext.getExtOrDefault = {name ->
-            return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['ReactNativeKustomer_' + name]
-        }
-    // The Android Gradle plugin is only required when opening the android folder stand-alone.
-    // This avoids unnecessary downloads and potential conflicts when the library is included as a
-    // module dependency in an application project.
-    // ref: https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:build_script_external_dependencies
-    if (project == rootProject) {
-        repositories {
-            google()
-            jcenter()
-            maven {
-                    url 'https://kustomer.bintray.com/android'
-                }
-            }
+    ext.safeExtGet = {prop, fallback ->
+        rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+    }
+    
+    ext {
+        kotlinVersion = '1.4.21'
+        gradleVersion = '4.1.2'
+        buildToolsVersion = "29.0.0"
+        minSdkVersion = 21
+        compileSdkVersion = 29
+        targetSdkVersion = 29
+    }
 
-            dependencies {
-                classpath 'com.android.tools.build:gradle:3.4.1'
-                classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.20"
-            }
-    } else {
-        repositories {
-            jcenter()
-            maven {
-                url 'https://kustomer.bintray.com/android'
-            }
-        }
+    repositories {
+        google()
+        mavenCentral()
+    }
 
-        dependencies {
-            classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50")
-        }
+    dependencies {
+        classpath "com.android.tools.build:gradle:${safeExtGet('gradleVersion', DEFAULT_GRADLE_VERSION)}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion', DEFAULT_KOTLIN_VERSION)}"
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'maven'
 
 android {
@@ -95,12 +64,8 @@ repositories {
 }
 
 dependencies {
-    //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
-    implementation 'com.kustomer.chat:ui:2.9.2'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYLCE_VERSION"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$LIFECYLCE_VERSION"
+    implementation 'com.kustomer.chat:ui:2.9.+'
 }
 
 def configureReactNativePom(def pom) {

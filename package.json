@@ -1,7 +1,7 @@
 {
   "name": "react-native-kustomer-sdk",
   "title": "React Native Kustomer SDK",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Kustomer SDK for React Native",
   "main": "index.js",
   "files": [
@@ -27,6 +27,12 @@
     "name": "Paula Pallarés Borràs",
     "email": "paulap@reby.co"
   },
+  "contributors": [
+    {
+      "name" : "sejoDjoseon",
+      "email" : "sergio@reby.co"
+    }
+  ],
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",

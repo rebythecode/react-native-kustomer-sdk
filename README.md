@@ -20,7 +20,7 @@ Linking the package manually is not required anymore with [Autolinking](https://
 
 Include the library in your `android/app/build.gradle`:
 
-`implementation 'com.kustomer.chat:ui:2.9.1'`
+`implementation 'com.kustomer.chat:ui:2.9.+'`
 
 ### iOS
 
@@ -52,34 +52,6 @@ public class MainApplication extends Application implements ReactApplication {
     });
   }
 }
-```
-
-Add the following permissions to your `AndroidManifest.xml`:
-
-```xml
-<!--Required to make network requests-->
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<uses-permission android:name="android.permission.INTERNET"/>
-
-<!--Required to take a picture and send as an attachment over chat-->
-
-<uses-permission android:name="android.permission.CAMERA"/>
-
-<queries>
-    <intent>
-        <action android:name="android.media.action.IMAGE_CAPTURE" />
-    </intent>
-    <intent>
-        <action android:name="android.intent.action.GET_CONTENT" />
-
-        <data android:mimeType="*/*" />
-    </intent>
-    <intent>
-        <action android:name="android.intent.action.SEND" />
-
-        <data android:mimeType="*/*" />
-    </intent>
-</queries>
 ```
 
 To customize Kustomer's theme, add a new style in `colors.xml` overwriting the values you want to replace, for example:
