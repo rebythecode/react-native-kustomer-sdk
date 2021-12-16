@@ -58,9 +58,7 @@ repositories {
     }
     google()
     jcenter()
-    maven {
-        url 'https://kustomer.bintray.com/android'
-    }
+    mavenCentral()
 }
 
 dependencies {
