@@ -29,7 +29,7 @@ buildscript {
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion safeExtGet('compileSdkVersion', DEFAULT_COMPILE_SDK_VERSION)
@@ -42,6 +42,14 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url = uri("${rootProject.projectDir}/maven-repo")
+        }
     }
 }
 
@@ -127,14 +135,5 @@ afterEvaluate { project ->
     artifacts {
         archives androidSourcesJar
         archives androidJavadocJar
-    }
-
-    task installArchives(type: Upload) {
-        configuration = configurations.archives
-        repositories.mavenDeployer {
-            // Deploy to react-native-event-bridge/maven, ready to publish to npm
-            repository url: "file://${projectDir}/../android/maven"
-            configureReactNativePom pom
-        }
     }
 }
