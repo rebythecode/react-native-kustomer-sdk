@@ -2,6 +2,10 @@
 
 @interface RCT_EXTERN_MODULE(KustomerSDK, NSObject)
 
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
 RCT_EXTERN_METHOD(identify: (NSString*)hash
                    resolver:(RCTPromiseResolveBlock)resolve
                    rejecter:(RCTPromiseRejectBlock)reject
