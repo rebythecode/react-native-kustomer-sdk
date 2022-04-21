@@ -27,7 +27,7 @@ class KustomerSDKModule(reactContext: ReactApplicationContext) :
 
     @ReactMethod
     fun presentSupport() {
-        Kustomer.getInstance().open()
+        Kustomer.getInstance().open(KusPreferredView.DEFAULT)
     }
 
     @ReactMethod

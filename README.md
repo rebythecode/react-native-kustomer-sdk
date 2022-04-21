@@ -20,7 +20,7 @@ Linking the package manually is not required anymore with [Autolinking](https://
 
 Include the library in your `android/app/build.gradle`:
 
-`implementation 'com.kustomer.chat:ui:2.9.+'`
+`implementation 'com.kustomer.chat:ui:2.9.9'`
 
 ### iOS
 
