@@ -29,8 +29,12 @@
   },
   "contributors": [
     {
-      "name" : "sejoDjoseon",
-      "email" : "sergio@reby.co"
+      "name": "sejoDjoseon",
+      "email": "sergio@reby.co"
+    },
+    {
+      "name": "yren",
+      "email": "yren@reby.co"
     }
   ],
   "license": "MIT",
